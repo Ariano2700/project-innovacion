@@ -15,7 +15,7 @@ const SidebarPanel = () => {
         aria-label='close sidebar'
         className='drawer-overlay'
       ></label>
-      <nav className='w-80 min-h-full bg-[#1f2328] p-4 md:p-5'>
+      <nav className='w-80 min-h-full bg-gray-200 dark:bg-[#1f2328] p-4 md:p-5'>
 
         <div className='flex justify-center py-4'>
           <Link to='/panel'>

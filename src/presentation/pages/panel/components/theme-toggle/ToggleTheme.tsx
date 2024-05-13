@@ -1,14 +1,21 @@
-import { useState } from 'react';
-import './ToggleTheme.css'
-const ToggleTheme = () => {
-  const [isChecked, setIsChecked] = useState(false);
-
-  const handleToggle = () => {
-    setIsChecked((prevState) => !prevState);
-  };
+import { useEffect } from "react";
+import "./ToggleTheme.css";
+const ToggleTheme = ({handleChangeTheme}:{handleChangeTheme: () => void}) => {
+useEffect(() =>{ 
+  const themeCheckbox =document.getElementById("theme-checkbox") as HTMLInputElement;
+  if(themeCheckbox.checked){
+    console.log("esta chekeado")
+  }else{
+    console.log("no esta chekeado")
+  }
+},[])
   return (
     <div className="theme-switch">
-      <input type="checkbox" id="theme-checkbox" checked={isChecked} onChange={handleToggle} />
+      <input
+        type="checkbox"
+        id="theme-checkbox"
+        onChange={handleChangeTheme}
+      />
       <label htmlFor="theme-checkbox">
         <div></div>
         <span>

@@ -1,6 +1,8 @@
 import { ReactNode } from "react";
 import { User as FirebaseUser } from "firebase/auth";
 import { Auth } from "./formTypes";
+export type Theme = 'light' | 'dark';
+
 
 export type LogOutFunction = () => void;
 
@@ -17,3 +19,8 @@ export type AuthProviderProps = {
   children: ReactNode;
 };
 export type UserFirebaseOrNull = FirebaseUser | null;
+
+export type ThemeContextType = {
+  theme: Theme;
+  toggleTheme: () => void;
+};

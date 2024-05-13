@@ -1,4 +1,5 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
+import NotfoundPage from "./presentation/pages/outsite/NotFoundPage/NotfoundPage";
 
 const router = createBrowserRouter([
   {
@@ -78,5 +79,9 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path:"*",
+    element:<NotfoundPage/>
+  }
 ]);
 export default router;

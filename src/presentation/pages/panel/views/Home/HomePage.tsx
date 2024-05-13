@@ -7,7 +7,7 @@ const HomePage = () => {
   console.log(user?.email);
   return (
     <>
-      <div className="w-full flex flex-col items-center text-white gap-10">
+      <div className="w-full flex flex-col items-center gap-10">
         <h1 className="text-6xl">ESTA ES LA PAGINA DE HOME</h1>
         <h1 className="text-4xl">{user?.email}</h1>
         <h1 className="text-4xl">{role ? useRoleName({roleNumber:role}): "No tiene rol"}</h1>
