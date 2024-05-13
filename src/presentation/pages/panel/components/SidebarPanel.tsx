@@ -3,11 +3,13 @@ import SidebarOption from './SidebarOption';
 import sidebarOptions from '../../../protected-routes/panel-routes';
 
 // Logo OMA
-import logo from '../../../assets/img/logo-oma.svg';
+//import logo from '../../../assets/img/logo-oma.svg';
+import logorandomXD from '../../../assets/img/randomimg.svg'
 
 import { Link } from 'react-router-dom';
 
 const SidebarPanel = () => {
+
   return (
     <aside className='drawer-side'>
       <label
@@ -19,7 +21,7 @@ const SidebarPanel = () => {
 
         <div className='flex justify-center py-4'>
           <Link to='/panel'>
-            <img src={logo} alt='Logo de OMA' width={220} />
+            <img src={logorandomXD} alt='Logo de OMA' width={220} />
           </Link>
         </div>
 

@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.bg-outsidewrapper{
+.bg-outsideforms{
     padding: 20px;
     background: lightblue;
     display: flex;
@@ -11,8 +11,8 @@
     justify-content: center;
     gap: 20px;
     border-radius: 5px;
-    border: 2px solid ;
-    box-shadow: 4px 4px;
+    border: 2px solid black;
+    box-shadow: 4px 4px black;
 }
 .inputLoginRegister{
     width: 100%;

@@ -1,5 +1,4 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
-import NotfoundPage from "./presentation/pages/outsite/NotFoundPage/NotfoundPage";
 
 const router = createBrowserRouter([
   {
@@ -77,11 +76,25 @@ const router = createBrowserRouter([
           return { Component: RegisterPage.default };
         },
       },
+      {
+        path: "*",
+        async lazy() {
+          const NotFoudPage = await import(
+            "./presentation/pages/outsite/NotFoundPage/NotfoundPage"
+          );
+          return { Component: NotFoudPage.default}
+        },
+      },
     ],
   },
   {
-    path:"*",
-    element:<NotfoundPage/>
-  }
+    path: "*",
+    async lazy() {
+      const NotfoundPage = await import(
+        "./presentation/pages/outsite/NotFoundPage/NotfoundPage"
+      );
+      return { element: <NotfoundPage.default /> };
+    },
+  },
 ]);
 export default router;

@@ -4,7 +4,13 @@ import { useAuth } from "../../../../context/authContext";
 import { useNavigate } from "react-router-dom";
 import ToggleTheme from "./theme-toggle/ToggleTheme";
 
-const NavbarPanel = ({handleChangeTheme}:{handleChangeTheme: () => void}) => {
+type ToggleThemeProps = {
+  theme: string;
+  handleChangeTheme: () => void;
+};
+
+
+const NavbarPanel = ({ handleChangeTheme, theme }: ToggleThemeProps) => {
   const { logOut } = useAuth();
   const navigate = useNavigate();
   const handleLogOut = () => {
@@ -22,7 +28,7 @@ const NavbarPanel = ({handleChangeTheme}:{handleChangeTheme: () => void}) => {
 
       <div className="flex gap-2">
         <div className="flex items-center gap-5">
-          <ToggleTheme handleChangeTheme={handleChangeTheme}/>
+          <ToggleTheme handleChangeTheme={handleChangeTheme} theme={theme}/>
           <details className="dropdown dropdown-end">
             <summary className="btn w-10 h-10 p-0 rounded-full flex items-center justify-center bg-gray-300">
               <SolarUserOutline className="text-xl" />

@@ -4,8 +4,8 @@ const NotfoundPage = () => {
   return (
     <>
       <div className="flex flex-col text-4xl items-center gap-5 text-center">
-        <h2 className="text-gray-400">404 - PAGE NOT FOUND</h2>
-        <h1 className="text-white">
+        <h2 className="dark:text-gray-400 text-gray-500">404 - PAGE NOT FOUND</h2>
+        <h1 className="dark:text-white text-black">
           LA PAGINA BUSCADA NO SE <br /> ENCUENTRA EN EL SITIO WEB.
         </h1>
         <Link to={"/panel/inicio"}>

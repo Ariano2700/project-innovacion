@@ -98,7 +98,7 @@ const Register = () => {
     <>
       <div className="flex items-center justify-center flex-col">
         <div className="mb-8">
-          <h1 className="text-[#3a3838]">
+          <h1 className="text-[#3a3838] dark:text-gray-300">
             Al registrar un nuevo usuario se cerrara la sesion actual para
             evitar conflictos.
           </h1>

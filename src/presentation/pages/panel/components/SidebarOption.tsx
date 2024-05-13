@@ -20,7 +20,7 @@ const SidebarOption = ({ path, label, Icon, children }: SidebarOptionProps) => {
       {
         children ? (
           <details className='collapse rounded-none collapse-arrow'>
-            <summary className='collapse-title btn btn-md py-0 !flex items-center btn-ghost w-full gap-2 justify-start text-gray-800 hover:bg-gray-200'>
+            <summary className='collapse-title btn btn-md py-0 !flex items-center btn-ghost w-full gap-2 justify-start text-gray-700 hover:bg-gray-200 dark:text-gray-400 dark:hover:text-gray-700'>
               {
                 Icon && <Icon className='text-xl' />
               }
@@ -36,7 +36,7 @@ const SidebarOption = ({ path, label, Icon, children }: SidebarOptionProps) => {
                       className={
                         ({ isActive }) => [
                           'btn btn-md btn-ghost w-full ps-11 gap-2 justify-start',
-                          isActive ? '!bg-primary text-white' : 'text-gray-700 hover:bg-gray-200'
+                          isActive ? '!bg-primary text-white' : 'text-gray-700 hover:bg-gray-200 dark:text-gray-400 dark:hover:text-gray-700'
                         ].join(' ')
                       }
                       onClick={closeSidebar}
@@ -58,7 +58,7 @@ const SidebarOption = ({ path, label, Icon, children }: SidebarOptionProps) => {
               className={
                 ({ isActive }) => [
                   'btn btn-md btn-ghost w-full gap-2 justify-start',
-                  isActive ? '!bg-primary text-white' : 'text-gray-700 hover:bg-gray-200'
+                  isActive ? '!bg-primary text-white' : 'text-gray-700 hover:bg-gray-200 dark:text-gray-400 dark:hover:text-gray-700'
                 ].join(' ')
               }
               onClick={closeSidebar}
