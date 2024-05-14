@@ -77,6 +77,13 @@ const router = createBrowserRouter([
         },
       },
       {
+        path:"prueba",
+        async lazy() {
+          const pruebaPage = await import ("./presentation/pages/panel/views/pruebaXD/index");
+          return{Component: pruebaPage.default}
+        }
+      },
+      {
         path: "*",
         async lazy() {
           const NotFoudPage = await import(

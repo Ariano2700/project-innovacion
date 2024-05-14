@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-import { useAuth } from "../../../context/authContext";
 import PhHeartbeatBold from "../../components/icons/Phosphor/PhHeartbeatBold";
 import MaterialSymbolsLightFinanceRounded from "../../components/icons/material-symbols-light/MaterialSymbolsLightFinanceRounded";
 import MaterialSymbolsHomeOutlineRounded from "../../components/icons/material-symbols/MaterialSymbolsHomeOutlineRounded";
@@ -11,35 +9,18 @@ type SidebarOption = {
   Icon?: React.FC<React.SVGProps<SVGSVGElement>>;
   children?: SidebarOption[];
 };
-export const roleNumber = () => {
-  const { role } = useAuth();
-  return role;
-};
+
 const sidebarOptions: SidebarOption[] = [
   {
     path: "inicio",
     label: "Inicio",
     Icon: MaterialSymbolsHomeOutlineRounded,
   },
-  // {
-  //   path: 'animales',
-  //   label: 'Animales',
-  //   Icon: MaterialSymbolsLocalHospitalOutlineRounded,
-  //   children: [
-  //     {
-  //       path: 'zoologico',
-  //       label: 'Zoológico',
-  //     },
-  //     {
-  //       path: 'canes',
-  //       label: 'Canes',
-  //     },
-  //     {
-  //       path: 'equinos',
-  //       label: 'Equinos',
-  //     },
-  //   ],
-  // },
+  {
+    path: "prueba",
+    label: "DEYVIS CHUPALO",
+    Icon:MaterialSymbolsLocalHospitalOutlineRounded
+  },
   // {
   //   path: 'salud',
   //   label: 'Salud y bienestar',
@@ -74,13 +55,11 @@ const sidebarOptions: SidebarOption[] = [
   //     },
   //   ]
   // },
-
-    {
-      path: 'register',
-      label: 'Registrar',
-      Icon: SolarUsersGroupRoundedLinear,
-    },
-  ];
-
+  {
+    path: "register",
+    label: "Registrar",
+    Icon: SolarUsersGroupRoundedLinear,
+  },
+];
 
 export default sidebarOptions;
