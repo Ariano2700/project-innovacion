@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../../../../context/authContext";
-import useRoleName from "../../../../../hooks/useRoleName";
 import Card from "../../../../components/Card";
 import MaterialSymbolsEditOutlineRounded from "../../../../components/icons/material-symbols/MaterialSymbolsEditOutlineRounded";
 import { ProfileData } from "../../components/ProfileData";
@@ -20,7 +19,7 @@ import { getData } from "../../../../../hooks/getData";
 
 const ProfileUpdate = () => {
   const navigate = useNavigate();
-  const { user, role } = useAuth();
+  const { user } = useAuth();
   const [uploadImg, setUploadImg] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string>(
     "https://picsum.photos/200"
