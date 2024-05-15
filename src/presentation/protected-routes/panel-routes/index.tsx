@@ -20,24 +20,24 @@ const sidebarOptions: SidebarOption[] = [
   {
     path: "prueba",
     label: "Deyvis chupalo",
-    Icon:MaterialSymbolsLocalHospitalOutlineRounded
+    Icon: MaterialSymbolsLocalHospitalOutlineRounded,
   },
   {
-    path: 'usuario',
+    path: "usuario",
     label: "Usuario",
     Icon: MaterialSymbolsLightAccountBoxOutline,
-    children:[
+    children: [
       {
-        path: 'perfil',
+        path: "perfil",
         label: "Perfil",
-        Icon: MaterialSymbolsLightAccountCircleOutline
+        Icon: MaterialSymbolsLightAccountCircleOutline,
       },
       {
-        path: 'actualizar-perfil',
+        path: "actualizar-perfil",
         label: "Actualizar perfil",
-        Icon: MaterialSymbolsLightSettingsAccountBoxOutlineRounded
-      }
-    ]
+        Icon: MaterialSymbolsLightSettingsAccountBoxOutlineRounded,
+      },
+    ],
   },
   {
     path: "register",

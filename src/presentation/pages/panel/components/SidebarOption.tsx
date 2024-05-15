@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { RiArrowDownSLine } from "../../../components/icons/remix-icon/RiArrowDownSLine";
 
 type SidebarOptionProps = {
   path: string;
@@ -9,18 +10,23 @@ type SidebarOptionProps = {
 };
 
 const SidebarOption = ({ path, label, Icon, children }: SidebarOptionProps) => {
+
+  const [isRotated, setIsRotated] = useState<boolean>(false);
+
   const closeSidebar = () => {
     const sidebar = document.getElementById("drawer-panel") as HTMLInputElement;
     sidebar.checked = false;
   };
-
   return (
     <li className="">
       {children ? (
-        <details className="collapse collapse-arrow rounded-none">
-          <summary className="collapse-title btn btn-md py-0 !flex items-center btn-ghost w-full gap-2 justify-start text-gray-700 hover:bg-gray-200 dark:text-gray-400 dark:hover:text-gray-700">
-            {Icon && <Icon className="text-xl items-center" />}
-            <span>{label}</span>
+        <details className="collapse rounded-none">
+          <summary onClick={() => setIsRotated(prevState => !prevState)} className="collapse-title btn btn-md py-0 !flex items-center btn-ghost w-full gap-2 justify-between text-gray-700 hover:bg-gray-200 dark:text-gray-400 dark:hover:text-gray-700">
+            <div className="flex justify-center items-center gap-2">
+              {Icon && <Icon className="text-xl items-center" />}
+              <span>{label}</span>
+            </div>
+            <RiArrowDownSLine className={`text-xl ${isRotated ? 'rotate-clockwise' : 'rotate-counterclockwise'}`}/>
           </summary>
           <div className="collapse-content px-0">
             <ul>

@@ -7,8 +7,18 @@ import sidebarOptions from '../../../protected-routes/panel-routes';
 import logorandomXD from '../../../assets/img/randomimg.svg'
 
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../../../context/authContext';
 
 const SidebarPanel = () => {
+  const { role } = useAuth();
+
+  // Filtrar las opciones de la barra lateral según el role del usuario
+  const filteredSidebarOptions = sidebarOptions.filter(option => {
+    if (role !== 1) {
+      return option.path !== "register";
+    }
+    return true;
+  });
 
   return (
     <aside className='drawer-side'>
@@ -27,7 +37,7 @@ const SidebarPanel = () => {
 
         <ul className='flex flex-col gap-2'>
           {
-            sidebarOptions.map(({ path, label, Icon, children }, index) => (
+            filteredSidebarOptions.map(({ path, label, Icon, children }, index) => (
               <SidebarOption path={path} key={index} label={label} Icon={Icon} children={children} />
             ))
           }
