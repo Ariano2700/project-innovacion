@@ -1,5 +1,6 @@
-import PhHeartbeatBold from "../../components/icons/Phosphor/PhHeartbeatBold";
-import MaterialSymbolsLightFinanceRounded from "../../components/icons/material-symbols-light/MaterialSymbolsLightFinanceRounded";
+import { MaterialSymbolsLightAccountCircleOutline } from "../../components/icons/material-symbols-light/MaterialSymblosLightAccountCircleOutline ";
+import { MaterialSymbolsLightSettingsAccountBoxOutlineRounded } from "../../components/icons/material-symbols-light/MaterialSymbolsLightSettingsAccountBoxOutlineRounded";
+import { MaterialSymbolsLightAccountBoxOutline } from "../../components/icons/material-symbols-light/MaterialSymbolsLihtAccountBoxOutline";
 import MaterialSymbolsHomeOutlineRounded from "../../components/icons/material-symbols/MaterialSymbolsHomeOutlineRounded";
 import MaterialSymbolsLocalHospitalOutlineRounded from "../../components/icons/material-symbols/MaterialSymbolsLocalHospitalOutlineRounded";
 import SolarUsersGroupRoundedLinear from "../../components/icons/solar/SolarUsersGroupRoundedLinear";
@@ -18,43 +19,26 @@ const sidebarOptions: SidebarOption[] = [
   },
   {
     path: "prueba",
-    label: "DEYVIS CHUPALO",
+    label: "Deyvis chupalo",
     Icon:MaterialSymbolsLocalHospitalOutlineRounded
   },
-  // {
-  //   path: 'salud',
-  //   label: 'Salud y bienestar',
-  //   Icon: PhHeartbeatBold,
-  //   children: [
-  //     {
-  //       path: 'cuidadores',
-  //       label: 'Cuidadores',
-  //     },
-  //     {
-  //       path: 'alimentacion',
-  //       label: 'Alimentación',
-  //     },
-  //     {
-  //       path: 'historia-clinica',
-  //       label: 'Historia clínica',
-  //     },
-  //   ]
-  // },
-  // {
-  //   path: 'finanzas',
-  //   label: 'Finanzas', // Finanzas y Recaudación de Fondos
-  //   Icon: MaterialSymbolsLightFinanceRounded,
-  //   children: [
-  //     {
-  //       path: 'donaciones',
-  //       label: 'Donaciones',
-  //     },
-  //     {
-  //       path: 'productos',
-  //       label: 'Inventario de productos',
-  //     },
-  //   ]
-  // },
+  {
+    path: 'usuario',
+    label: "Usuario",
+    Icon: MaterialSymbolsLightAccountBoxOutline,
+    children:[
+      {
+        path: 'perfil',
+        label: "Perfil",
+        Icon: MaterialSymbolsLightAccountCircleOutline
+      },
+      {
+        path: 'actualizar-perfil',
+        label: "Actualizar perfil",
+        Icon: MaterialSymbolsLightSettingsAccountBoxOutlineRounded
+      }
+    ]
+  },
   {
     path: "register",
     label: "Registrar",

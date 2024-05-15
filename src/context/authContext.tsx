@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { AuthProviderProps, LogOutFunction, SingUpAndLoginFunction } from "../domain/types/contextTypes";
 import { User, UserCredential, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import {auth as authFirebase} from "../firebase/auth"
-import { getRole } from "../hooks/getRole";
+import { getData } from "../hooks/getData";
 export const authContext = createContext<SingUpAndLoginFunction | undefined>(
     undefined
   );
@@ -48,8 +48,8 @@ export const authContext = createContext<SingUpAndLoginFunction | undefined>(
         setUser(currentUser);
         setLoading(false);
         if (currentUser) {
-          const role = await getRole({ uidUser: currentUser.uid });
-          setRole(role);
+          const userData = await getData({ uidUser: currentUser.uid });
+          setRole(userData?.role);
         } else {
           setRole(null);
         }

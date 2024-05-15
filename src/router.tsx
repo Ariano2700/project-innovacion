@@ -92,6 +92,20 @@ const router = createBrowserRouter([
           return { Component: NotFoudPage.default}
         },
       },
+      {
+        path: 'usuario/perfil',
+        async lazy() {
+          const ProfilePage = await import('./presentation/pages/panel/views/ProfilePage');
+          return { Component: ProfilePage.default };
+        }
+      },
+      {
+        path: 'usuario/actualizar-perfil',
+        async lazy() {
+          const ProfileUpdatePage = await import('./presentation/pages/panel/views/ProfileUpdate');
+          return { Component: ProfileUpdatePage.default };
+        }
+      }
     ],
   },
   {
