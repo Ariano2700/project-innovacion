@@ -48,7 +48,7 @@ const PanelWrapper = () => {
   //"bg-[#1f2328]" : "bg-gray-200"
   return (
     <div
-      className={`drawer bg-gray-200 dark:bg-[#1f2328] dark:text-white text-black`}
+      className={`drawer bg-gray-200 dark:bg-[#181A1E] dark:text-white text-black`}
       onClick={closeAllDetails}
     >
       <input id="drawer-panel" type="checkbox" className="drawer-toggle" />
