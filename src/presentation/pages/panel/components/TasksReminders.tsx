@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { MaterialSymbolsAddRounded } from "../../../components/icons/material-symbols/MaterialSymbolsAddRounded";
 import { useAuth } from "../../../../context/authContext";
+import { motion } from "framer-motion";
 
 const TasksReminders = () => {
   const { role } = useAuth();
@@ -55,16 +56,29 @@ const TasksReminders = () => {
   /*REMINDERS */
   return (
     <div>
-      <h1 className="text-2xl mb-5 items-start">Recordatorio de tareas</h1>
+      <motion.h1
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{
+          duration: 2,
+          ease: "easeInOut",
+          delay: 0.2,
+          type: "spring",
+        }}
+        className="text-2xl mb-5 items-start"
+      >
+        Recordatorio de tareas
+      </motion.h1>
       <div className="flex flex-col flex-wrap justify-around gap-5 mb-3 mt-3">
         {taskReminders
-          ? taskReminders.map((task) => (
+          ? taskReminders.map((task, index) => (
               <TaskReminderBase
                 key={task.id}
                 reminder={task.reminder}
                 timeAgo={task.timeAgo}
                 id={task.id}
                 handleDeleteType={() => handleDelete(task)}
+                index={index}
               />
             ))
           : "No hay recordatorios"}
@@ -74,12 +88,22 @@ const TasksReminders = () => {
         " "
       ) : (
         <Link to={"/panel/nuevo-recordatorio"}>
-          <div className="mt-6 bg-white dark:bg-[#202528] p-3 py-8 w-[330px] rounded-3xl border-2 border-dashed border-primary cursor-pointer font-bold dark:hover:bg-p700 hover:bg-p100 hover:text-white text-primary">
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{
+              duration: 2,
+              ease: "easeInOut",
+              delay: 1,
+              type: "spring",
+            }}
+            className="mt-6 bg-white dark:bg-[#202528] p-3 py-8 w-[330px] rounded-3xl border-2 border-dashed border-primary cursor-pointer font-bold dark:hover:bg-p700 hover:bg-p100 hover:text-white text-primary"
+          >
             <div className="flex px-3 justify-center items-center content-center gap-2">
               <MaterialSymbolsAddRounded className="text-xl" />
               <h2>Añadir tarea</h2>
             </div>
-          </div>
+          </motion.div>
         </Link>
       )}
     </div>
