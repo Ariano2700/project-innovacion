@@ -26,7 +26,7 @@ const router = createBrowserRouter([
         path: "/iniciar-sesion",
         async lazy() {
           const LoginPage = await import(
-            "./presentation/pages/outsite/Login/Login"
+            "./presentation/pages/outsite/Login"
           );
           return { Component: LoginPage.default };
         },
@@ -62,7 +62,7 @@ const router = createBrowserRouter([
         path: "inicio",
         async lazy() {
           const HomePage = await import(
-            "./presentation/pages/panel/views/Home/HomePage"
+            "./presentation/pages/panel/views/Home"
           );
           return { Component: HomePage.default };
         },
@@ -71,15 +71,15 @@ const router = createBrowserRouter([
         path: "register",
         async lazy() {
           const RegisterPage = await import(
-            "./presentation/pages/panel/views/Register/Register"
+            "./presentation/pages/panel/views/Register"
           );
           return { Component: RegisterPage.default };
         },
       },
       {
-        path:"prueba",
+        path:"nuevo-recordatorio",
         async lazy() {
-          const pruebaPage = await import ("./presentation/pages/panel/views/pruebaXD/index");
+          const pruebaPage = await import ("./presentation/pages/panel/views/AddTaskReminder");
           return{Component: pruebaPage.default}
         }
       },
@@ -87,7 +87,7 @@ const router = createBrowserRouter([
         path: "*",
         async lazy() {
           const NotFoudPage = await import(
-            "./presentation/pages/outsite/NotFoundPage/NotfoundPage"
+            "./presentation/pages/outsite/NotFoundPage"
           );
           return { Component: NotFoudPage.default}
         },
@@ -112,7 +112,7 @@ const router = createBrowserRouter([
     path: "*",
     async lazy() {
       const NotfoundPage = await import(
-        "./presentation/pages/outsite/NotFoundPage/NotfoundPage"
+        "./presentation/pages/outsite/NotFoundPage"
       );
       return { element: <NotfoundPage.default /> };
     },

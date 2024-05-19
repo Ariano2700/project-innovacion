@@ -11,9 +11,10 @@ const SidebarPanel = () => {
 
   //Filtrar las opciones de la barra lateral según el rol del usuario
   //Filter sidebar options by user role
+  const restrictedPath = ["register", "nuevo-recordatorio"];
   const filteredSidebarOptions = sidebarOptions.filter((option) => {
-    if (role !== 1) {
-      return option.path !== "register";
+    if (role !== 1 && restrictedPath.includes(option.path)) {
+      return false;
     }
     return true;
   });

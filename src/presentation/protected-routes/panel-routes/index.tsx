@@ -1,8 +1,8 @@
 import { MaterialSymbolsLightAccountCircleOutline } from "../../components/icons/material-symbols-light/MaterialSymblosLightAccountCircleOutline ";
 import { MaterialSymbolsLightSettingsAccountBoxOutlineRounded } from "../../components/icons/material-symbols-light/MaterialSymbolsLightSettingsAccountBoxOutlineRounded";
 import { MaterialSymbolsLightAccountBoxOutline } from "../../components/icons/material-symbols-light/MaterialSymbolsLihtAccountBoxOutline";
+import { MaterialSymbolsAssignmentAddOutlineRounded } from "../../components/icons/material-symbols/MaterialSymbolsAssignmentAddOutlineRounded";
 import MaterialSymbolsHomeOutlineRounded from "../../components/icons/material-symbols/MaterialSymbolsHomeOutlineRounded";
-import MaterialSymbolsLocalHospitalOutlineRounded from "../../components/icons/material-symbols/MaterialSymbolsLocalHospitalOutlineRounded";
 import SolarUsersGroupRoundedLinear from "../../components/icons/solar/SolarUsersGroupRoundedLinear";
 type SidebarOption = {
   path: string;
@@ -18,9 +18,9 @@ const sidebarOptions: SidebarOption[] = [
     Icon: MaterialSymbolsHomeOutlineRounded,
   },
   {
-    path: "prueba",
-    label: "Deyvis chupalo",
-    Icon: MaterialSymbolsLocalHospitalOutlineRounded,
+    path: "nuevo-recordatorio",
+    label: "Añadir recordatorio",
+    Icon: MaterialSymbolsAssignmentAddOutlineRounded,
   },
   {
     path: "usuario",
@@ -41,7 +41,7 @@ const sidebarOptions: SidebarOption[] = [
   },
   {
     path: "register",
-    label: "Registrar",
+    label: "Registrar usuario",
     Icon: SolarUsersGroupRoundedLinear,
   },
 ];

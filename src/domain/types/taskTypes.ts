@@ -1,4 +1,7 @@
 export type TaskReminderProps = {
+  id?: string | null;
   reminder: string;
-  timeSet: string;
+  timeAgo?: string;
+  timeAgoNoFormat?:string
+  handleDeleteType?: () => void; 
 };
