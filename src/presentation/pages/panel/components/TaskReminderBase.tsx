@@ -4,7 +4,8 @@ import { ZondiconsDotsHorizontalTriple } from "../../../components/icons/zond-ic
 import { Variants, motion } from "framer-motion";
 
 const TaskReminderBase = (props: TaskReminderProps & { index: number }) => {
-  const { reminder, timeAgo, handleDeleteType, id, index } = props;
+  const { reminder, timeAgo, timeAgoColor, handleDeleteType, id, index } =
+    props;
 
   const variants: Variants = {
     hidden: {
@@ -27,9 +28,10 @@ const TaskReminderBase = (props: TaskReminderProps & { index: number }) => {
       variants={variants}
       layoutId={id ? id : ""}
       className="bg-white dark:bg-[#202528] flex justify-between items-center p-3 py-5 w-[330px] rounded-3xl"
+      style={{ wordWrap: "break-word", overflowWrap: "break-word" }}
     >
       <div className="flex px-3 justify-center items-center">
-        <div className="bg-red-500 rounded-xl mr-4">
+        <div className={`${timeAgoColor} rounded-xl mr-4`}>
           <div className="p-2">
             <MaterialSymbolsInfoOutlineRounded className="text-4xl text-white dark:text-[#202528]" />
           </div>

@@ -71,16 +71,23 @@ const router = createBrowserRouter([
         path: "register",
         async lazy() {
           const RegisterPage = await import(
-            "./presentation/pages/panel/views/Register"
+            "./presentation/pages/panel/views/RegisterPage"
           );
           return { Component: RegisterPage.default };
         },
       },
       {
+        path:"recordatorios-todos",
+        async lazy() {
+          const AllTaskRemindersPage = await import ("./presentation/pages/panel/views/AllTasksRemindersPage");
+          return{Component: AllTaskRemindersPage.default}
+        }
+      },
+      {
         path:"nuevo-recordatorio",
         async lazy() {
-          const pruebaPage = await import ("./presentation/pages/panel/views/AddTaskReminder");
-          return{Component: pruebaPage.default}
+          const AddTaskReminderPage = await import ("./presentation/pages/panel/views/AddTaskReminderPage");
+          return{Component: AddTaskReminderPage.default}
         }
       },
       {
@@ -102,7 +109,7 @@ const router = createBrowserRouter([
       {
         path: 'usuario/actualizar-perfil',
         async lazy() {
-          const ProfileUpdatePage = await import('./presentation/pages/panel/views/ProfileUpdate');
+          const ProfileUpdatePage = await import('./presentation/pages/panel/views/ProfileUpdatePage');
           return { Component: ProfileUpdatePage.default };
         }
       }

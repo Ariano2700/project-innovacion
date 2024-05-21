@@ -1,5 +1,27 @@
 import { getTaskReminders } from "./getTaskReminders";
 
+const formatTimeAgoWithColor = (timeAgo: string) => {
+  const now = new Date();
+  const time = new Date(timeAgo);
+  const differenceInMs = now.getTime() - time.getTime();
+
+  const differenceInMinutes = Math.floor(differenceInMs / (1000 * 60));
+  const differenceInHours = Math.floor(differenceInMs / (1000 * 60 * 60));
+
+  let color = "";
+
+  if (differenceInMinutes < 60) {
+    color = "bg-green-500";
+  } else if (differenceInHours < 24) {
+    color = "bg-green-500";
+  } else if (differenceInHours < 48) {
+    color = "bg-yellow-500";
+  } else {
+    color = "bg-red-500";
+  }
+  return color;
+};
+
 const formatTimeAgo = (timeAgo: string) => {
   const now = new Date();
   const time = new Date(timeAgo);
@@ -28,12 +50,16 @@ export const useGetTaskReminders = async () => {
           const timeAgoDateFormated = task.timeAgo
             ? formatTimeAgo(task.timeAgo)
             : "Fecha no disponible";
+          const timeAgoDateColor = task.timeAgo
+            ? formatTimeAgoWithColor(task.timeAgo)
+            : "Fecha no disponible";
 
           return {
             id: task.id!,
             reminder: task.reminder,
             timeAgo: timeAgoDateFormated,
             timeAgoData: timeAgoDate,
+            timeAgoColor: timeAgoDateColor,
           };
         }) || [];
     const sortedReminders = [...formatedReminders].sort((a, b) => {

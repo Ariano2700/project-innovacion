@@ -3,6 +3,7 @@ import { MaterialSymbolsLightSettingsAccountBoxOutlineRounded } from "../../comp
 import { MaterialSymbolsLightAccountBoxOutline } from "../../components/icons/material-symbols-light/MaterialSymbolsLihtAccountBoxOutline";
 import { MaterialSymbolsAssignmentAddOutlineRounded } from "../../components/icons/material-symbols/MaterialSymbolsAssignmentAddOutlineRounded";
 import MaterialSymbolsHomeOutlineRounded from "../../components/icons/material-symbols/MaterialSymbolsHomeOutlineRounded";
+import { MaterialSymbolsListAltOutlineRounded } from "../../components/icons/material-symbols/MaterialSymbolsListAltOutlineRounded";
 import SolarUsersGroupRoundedLinear from "../../components/icons/solar/SolarUsersGroupRoundedLinear";
 type SidebarOption = {
   path: string;
@@ -16,6 +17,11 @@ const sidebarOptions: SidebarOption[] = [
     path: "inicio",
     label: "Inicio",
     Icon: MaterialSymbolsHomeOutlineRounded,
+  },
+  {
+    path: "recordatorios-todos",
+    label: "Todos los recordatorios",
+    Icon: MaterialSymbolsListAltOutlineRounded,
   },
   {
     path: "nuevo-recordatorio",

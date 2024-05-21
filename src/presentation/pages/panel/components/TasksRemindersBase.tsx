@@ -9,12 +9,13 @@ import { Link } from "react-router-dom";
 import { MaterialSymbolsAddRounded } from "../../../components/icons/material-symbols/MaterialSymbolsAddRounded";
 import { useAuth } from "../../../../context/authContext";
 import { motion } from "framer-motion";
+import { RiArrowDownSLine } from "../../../components/icons/remix-icon/RiArrowDownSLine";
 
-const TasksReminders = () => {
+const TasksRemindersBase = () => {
   const { role } = useAuth();
   /*REMINDERS */
   const [taskReminders, setTaskReminders] = useState<
-    { id: string; reminder: string; timeAgo: string }[]
+    { id: string; reminder: string; timeAgo: string; timeAgoColor: string }[]
   >([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -54,6 +55,8 @@ const TasksReminders = () => {
   };
   // console.log("taskReminders:", taskReminders);
   /*REMINDERS */
+  const MAX_VISIBLE_TASKS: number = 5;
+  const visibleTask = taskReminders.slice(0, MAX_VISIBLE_TASKS);
   return (
     <div>
       <motion.h1
@@ -70,12 +73,13 @@ const TasksReminders = () => {
         Recordatorio de tareas
       </motion.h1>
       <div className="flex flex-col flex-wrap justify-around gap-5 mb-3 mt-3">
-        {taskReminders
-          ? taskReminders.map((task, index) => (
+        {visibleTask.length > 0
+          ? visibleTask.map((task, index) => (
               <TaskReminderBase
                 key={task.id}
                 reminder={task.reminder}
                 timeAgo={task.timeAgo}
+                timeAgoColor={task.timeAgoColor}
                 id={task.id}
                 handleDeleteType={() => handleDelete(task)}
                 index={index}
@@ -83,7 +87,15 @@ const TasksReminders = () => {
             ))
           : "No hay recordatorios"}
       </div>
-
+      {taskReminders.length > MAX_VISIBLE_TASKS ? (
+        <Link to={"/panel/recordatorios-todos"}>
+          <a className="flex items-center justify-center">
+            Mostrar todas las tareas <RiArrowDownSLine className="text-xl" />
+          </a>
+        </Link>
+      ) : (
+        ""
+      )}
       {role !== 1 ? (
         " "
       ) : (
@@ -109,4 +121,4 @@ const TasksReminders = () => {
     </div>
   );
 };
-export default TasksReminders;
+export default TasksRemindersBase;
