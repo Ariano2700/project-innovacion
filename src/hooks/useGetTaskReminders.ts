@@ -1,3 +1,4 @@
+//import { useEffect, useState } from "react";
 import { getTaskReminders } from "./getTaskReminders";
 
 const formatTimeAgoWithColor = (timeAgo: string) => {
@@ -40,39 +41,79 @@ const formatTimeAgo = (timeAgo: string) => {
 };
 
 export const useGetTaskReminders = async () => {
-  try {
-    const reminders = await getTaskReminders();
-    const formatedReminders =
-      reminders
-        ?.filter((task) => task.id !== null && task.id !== undefined)
-        .map((task) => {
-          const timeAgoDate = task.timeAgo ? new Date(task.timeAgo) : null;
-          const timeAgoDateFormated = task.timeAgo
-            ? formatTimeAgo(task.timeAgo)
-            : "Fecha no disponible";
-          const timeAgoDateColor = task.timeAgo
-            ? formatTimeAgoWithColor(task.timeAgo)
-            : "Fecha no disponible";
+    try {
+      const reminders = await getTaskReminders();
+      const formatedReminders =
+        reminders
+          ?.filter((task) => task.id !== null && task.id !== undefined)
+          .map((task) => {
+            const timeAgoDate = task.timeAgo ? new Date(task.timeAgo) : null;
+            const timeAgoDateFormated = task.timeAgo
+              ? formatTimeAgo(task.timeAgo)
+              : "Fecha no disponible";
+            const timeAgoDateColor = task.timeAgo
+              ? formatTimeAgoWithColor(task.timeAgo)
+              : "Fecha no disponible";
 
-          return {
-            id: task.id!,
-            reminder: task.reminder,
-            timeAgo: timeAgoDateFormated,
-            timeAgoData: timeAgoDate,
-            timeAgoColor: timeAgoDateColor,
-          };
-        }) || [];
-    const sortedReminders = [...formatedReminders].sort((a, b) => {
-      const dateA = a.timeAgoData || new Date(0);
-      const dateB = b.timeAgoData || new Date(0);
-      return dateA.getTime() - dateB.getTime();
-    });
-    return sortedReminders;
-  } catch (error) {
-    console.error(
-      "Error al obtener el array del recordatorio de tareas",
-      error
-    );
-    return [];
-  }
-};
+            return {
+              id: task.id!,
+              reminder: task.reminder,
+              timeAgo: timeAgoDateFormated,
+              timeAgoData: timeAgoDate,
+              timeAgoColor: timeAgoDateColor,
+            };
+          }) || [];
+      const sortedReminders = [...formatedReminders].sort((a, b) => {
+        const dateA = a.timeAgoData || new Date(0);
+        const dateB = b.timeAgoData || new Date(0);
+        return dateA.getTime() - dateB.getTime();
+      });
+      return sortedReminders;
+    } catch (error) {
+      console.error(
+        "Error al obtener el array del recordatorio de tareas",
+        error
+      );
+      return [];
+    }
+  };
+
+  // const [taskReminders, setTaskReminders] = useState<
+  //   { id: string; reminder: string; timeAgo: string; timeAgoColor: string }[]
+  // >([]);
+  // useEffect(() => {
+  //   const unsuscribe = getTaskReminders((reminders) => {
+  //     const formatedReminders =
+  //       reminders
+  //         .filter((task) => task.id !== null && task.id !== undefined)
+  //         .map((task) => {
+  //           const timeAgoDate = task.timeAgo ? new Date(task.timeAgo) : null;
+  //           const timeAgoDateFormated = task.timeAgo
+  //             ? formatTimeAgo(task.timeAgo)
+  //             : "Fecha no disponible";
+  //           const timeAgoDateColor = task.timeAgo
+  //             ? formatTimeAgoWithColor(task.timeAgo)
+  //             : "";
+
+  //           return {
+  //             id: task.id!,
+  //             reminder: task.reminder,
+  //             timeAgo: timeAgoDateFormated,
+  //             timeAgoData: timeAgoDate,
+  //             timeAgoColor: timeAgoDateColor,
+  //           };
+  //         }) || [];
+  //     const sortedReminders = [...formatedReminders].sort((a, b) => {
+  //       const dateA = a.timeAgoData || new Date(0);
+  //       const dateB = b.timeAgoData || new Date(0);
+  //       return dateA.getTime() - dateB.getTime();
+  //     });
+  //     setTaskReminders(sortedReminders);
+  //   });
+
+  //   return () => unsuscribe();
+  // }, []);
+  
+  // return taskReminders;
+  
+//};

@@ -141,7 +141,6 @@ const Register = () => {
                 </option>
                 <option value="1">Administrador</option>
                 <option value="2">Usuario</option>
-                <option value="3">Visializador</option>
               </select>
             </div>
             <div className="flex justify-center items-center gap-4 mt-4">
