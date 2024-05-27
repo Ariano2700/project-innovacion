@@ -1,3 +1,18 @@
+# Request
+1. Install NPM (Node js)
+Link: https://nodejs.org/en/download/prebuilt-binaries
+Node.js includes npm (10.5.2).
+2. Install PNPM global
+npm install -g pnpm
+
+# Install project
+1. git clone ->link of the repository<-
+2. pnpm i
+3. Add .env in the project
+   ![image](https://github.com/Ariano2700/project-innovacion/assets/143843252/fe0085be-0ab5-4c3b-8e11-7dc7b5499ac9)
+4. Init local pnpm dev
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
