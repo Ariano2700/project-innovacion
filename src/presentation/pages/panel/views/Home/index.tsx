@@ -1,7 +1,9 @@
 import { useAuth } from "../../../../../context/authContext";
 import useRoleData from "../../../../../hooks/useRoleData";
+import ComponentDashBoard from "../../components/DashBoard";
 import { ProfileData } from "../../components/ProfileData";
 import TasksRemindersBase from "../../components/TasksRemindersBase";
+
 const HomePage = () => {
   const { role, user } = useAuth();
   const userData = ProfileData({ user: user });
@@ -23,10 +25,15 @@ const HomePage = () => {
           </h1>
         </div>
       </div>
-      {/*EJEMPLOS DE RECORDATORIOS DE TAREA (BETA)*/}
-      <div className="flex flex-col items-end">
-        <TasksRemindersBase />
+
+      <div className="flex">
+        <ComponentDashBoard></ComponentDashBoard>
+
+        <div className="flex flex-col items-end">
+          <TasksRemindersBase />
+        </div>
       </div>
+
     </>
   );
 };
