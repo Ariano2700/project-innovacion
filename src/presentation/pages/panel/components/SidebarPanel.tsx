@@ -28,9 +28,9 @@ const SidebarPanel = () => {
       ></label>
       <nav className="w-80 min-h-full bg-gray-200 dark:bg-[#181A1E] p-4 md:p-5">
         <div className="flex justify-center py-4">
-          <Link to="/panel">
+          {/* <Link to="/panel">
             <img src={logorandomXD} alt="Logo de OMA" width={220} />
-          </Link>
+          </Link> */}
         </div>
 
         <ul className="flex flex-col gap-2">

@@ -14,7 +14,7 @@ const ComponentDashBoard = () => {
                         ease: 'easeInOut',
                     }}
                     className="mb-8">
-                    <h1 className="text-4xl font-bold text-gray-500">Dashboard</h1>
+                    <h1 className="text-4xl font-bold text-black dark:text-white">Dashboard</h1>
                 </motion.header>
 
                 <div className="grid grid-cols-1 xl lg:grid-cols-3 gap-6 p-4 ">
