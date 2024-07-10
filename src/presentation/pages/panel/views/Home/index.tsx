@@ -1,4 +1,4 @@
-import ComponentDashBoard from "../../components/DashBoard";
+import ComponentDashBoard from "../../components/DashboardTest";
 import TasksRemindersBase from "../../components/TasksRemindersBase";
 
 const HomePage = () => {
