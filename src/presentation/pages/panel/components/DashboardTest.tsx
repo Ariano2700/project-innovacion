@@ -1,26 +1,20 @@
 import { useEffect, useState } from "react";
-import GraphicsChartJs from "../../../components/graphics/Graphics";
+import GraphicsChartJs from "../../../components/graphics/GraphicsTest";
 import { motion } from "framer-motion";
-import getConsultAPI from "../../../../hooks/getConsultAPI";
-
-interface ConsultData {
-  id: number;
-  id_anio: number;
-  id_tipo: number;
-  mes: string;
-  total: string;
-}
+import getConsultAPI from "../../../../hooks/api/getConsultAPI";
+import { getDataI } from "../../../../domain/types/getDataI";
 
 interface BeneficioInt {
   ingreso: string | undefined;
   egreso: string | undefined;
 }
 
-function capitalizarPrimeraLetra(str: string | undefined) {
+export function capitalizarPrimeraLetra(str: string | undefined) {
   if (str === undefined) return;
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
-function beneficioNeto(props: BeneficioInt) {
+
+export function beneficioNeto(props: BeneficioInt) {
   const { egreso, ingreso } = props;
   if (ingreso !== undefined && egreso !== undefined) {
     const parseIngreso = parseInt(ingreso);
@@ -32,7 +26,7 @@ function beneficioNeto(props: BeneficioInt) {
   return;
 }
 
-function formatDataMoney(number: string | undefined) {
+export function formatDataMoney(number: string | undefined) {
   if (number === undefined) return;
   const parseNumber = parseInt(number);
 
@@ -44,17 +38,27 @@ function formatDataMoney(number: string | undefined) {
     return number;
   }
 }
-
-const ComponentDashBoard = () => {
-  const [income, setIncome] = useState<ConsultData>();
-  const [egress, setEgress] = useState<ConsultData>();
+interface ComponentDashBoard{
+  title: string;
+  year: string;
+}
+const ComponentDashBoard = ({title, year}:ComponentDashBoard) => {
+  const [income, setIncome] = useState<getDataI>();
+  const [egress, setEgress] = useState<getDataI>();
+  const [dataGraphics, setDataGraphics] = useState<number[]>([]);
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
         const { reponseIn, reponseOut } = await getConsultAPI();
-        console.log(reponseIn.at(-1));
-        console.log(reponseOut.at(-1));
-
+        
+        const dataInArray:number[] = []
+        reponseOut.forEach(data => {
+          const dataTotal = parseInt(data.total)
+          dataInArray.push(dataTotal);
+          })
+          setDataGraphics(dataInArray);
+        
         setIncome(reponseIn.at(-1));
         setEgress(reponseOut.at(-1));
       } catch (error) {
@@ -63,6 +67,7 @@ const ComponentDashBoard = () => {
     };
     fetchData();
   }, []);
+  console.log(dataGraphics)
   return (
     <div className="w-full overflow-hidden">
       <div className="flex-grow lg:p-6">
@@ -183,9 +188,9 @@ const ComponentDashBoard = () => {
             }}
             className="bg-white dark:bg-[#202528] lg:col-span-3 rounded-3xl flex flex-col items-start shadow-xl"
           >
-            <h1 className="mt-4 ml-4 text-2xl font-bold">Graficas</h1>
+            <h1 className="mt-4 ml-4 text-2xl font-bold">Graficas {title}</h1>
             <div className="flex flex-col w-full p-8">
-              <GraphicsChartJs />
+              <GraphicsChartJs title={title} year={year}  dataE={dataGraphics}  />
             </div>
           </motion.div>
 

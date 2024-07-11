@@ -12,11 +12,11 @@ export const months = {
   noviembre: "noviembre",
   diciembre: "diciembre",
 };
-export const typeofData = {
+export const typeofData: { [key: number]: string } = {
   1: "Ingreso",
   2: "Egreso",
 };
-export const years = {
+export const years: { [key: number]: number } = {
   1: 2022,
   2: 2023,
   3: 2024,

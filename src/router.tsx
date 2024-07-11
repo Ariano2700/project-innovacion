@@ -112,6 +112,13 @@ const router = createBrowserRouter([
           const ProfileUpdatePage = await import('./presentation/pages/panel/views/ProfileUpdatePage');
           return { Component: ProfileUpdatePage.default };
         }
+      },
+      {
+        path: 'estadisticas',
+        async lazy(){
+          const IncomeExpenseStatistcsPage = await import("./presentation/pages/panel/views/IncomeExpenseStatisticsPage");
+          return { Component: IncomeExpenseStatistcsPage.default}
+        }
       }
     ],
   },

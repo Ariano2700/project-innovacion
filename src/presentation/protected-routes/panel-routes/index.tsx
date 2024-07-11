@@ -1,3 +1,4 @@
+import CarbonAnalytics from "../../components/icons/carbon/CarbonAnalytics";
 import { MaterialSymbolsLightAccountCircleOutline } from "../../components/icons/material-symbols-light/MaterialSymblosLightAccountCircleOutline ";
 import { MaterialSymbolsLightSettingsAccountBoxOutlineRounded } from "../../components/icons/material-symbols-light/MaterialSymbolsLightSettingsAccountBoxOutlineRounded";
 import { MaterialSymbolsLightAccountBoxOutline } from "../../components/icons/material-symbols-light/MaterialSymbolsLihtAccountBoxOutline";
@@ -49,6 +50,11 @@ const sidebarOptions: SidebarOption[] = [
     path: "register",
     label: "Registrar usuario",
     Icon: SolarUsersGroupRoundedLinear,
+  },
+  {
+    path: "estadisticas",
+    label: "Estadisticas ingresos y egresos",
+    Icon: CarbonAnalytics,
   },
 ];
 
