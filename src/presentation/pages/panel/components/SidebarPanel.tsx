@@ -1,9 +1,9 @@
 // Sidebar options
 import SidebarOption from "./SidebarOption";
 import sidebarOptions from "../../../protected-routes/panel-routes";
-import logorandomXD from "../../../assets/img/randomimg.svg";
+// import logorandomXD from "../../../assets/img/randomimg.svg";
 
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useAuth } from "../../../../context/authContext";
 
 const SidebarPanel = () => {

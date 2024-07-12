@@ -45,7 +45,7 @@ const IncomeExpenseStatistcsPage = () => {
   };
   return (
     <div className="">
-      <div className="">
+      <div className="flex flex-col justify-start">
         <motion.h1
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
@@ -54,11 +54,10 @@ const IncomeExpenseStatistcsPage = () => {
             delay: 0.3,
             ease: "easeInOut",
           }}
-          className="mb-8"
+          className="mb-8 text-4xl font-bold text-black dark:text-white"
         >
-          <h1 className="text-4xl font-bold text-black dark:text-white">
-            Estadisticas y tablas
-          </h1>
+          {" "}
+          Estadisticas y tablas
         </motion.h1>
         <motion.div
           initial={{ opacity: 0, x: -100 }}
@@ -121,7 +120,7 @@ const IncomeExpenseStatistcsPage = () => {
               }}
               className="mb-8 text-2xl font-bold text-black dark:text-white"
             >
-              Tabla de ingresos año 2023
+              Tabla de egresos año 2023
             </motion.h2>
             <DataInTable data={egreseTable !== undefined ? egreseTable : []} />
           </motion.div>

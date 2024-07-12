@@ -1,4 +1,6 @@
 import CarbonAnalytics from "../../components/icons/carbon/CarbonAnalytics";
+import FluentPredictions24Regular from "../../components/icons/fluent-ui-system-icons/FluentPredictions24Regular";
+import IconParkOutlineSave from "../../components/icons/iconpark-outline/IconParkOutlineSave";
 import { MaterialSymbolsLightAccountCircleOutline } from "../../components/icons/material-symbols-light/MaterialSymblosLightAccountCircleOutline ";
 import { MaterialSymbolsLightSettingsAccountBoxOutlineRounded } from "../../components/icons/material-symbols-light/MaterialSymbolsLightSettingsAccountBoxOutlineRounded";
 import { MaterialSymbolsLightAccountBoxOutline } from "../../components/icons/material-symbols-light/MaterialSymbolsLihtAccountBoxOutline";
@@ -20,14 +22,34 @@ const sidebarOptions: SidebarOption[] = [
     Icon: MaterialSymbolsHomeOutlineRounded,
   },
   {
-    path: "recordatorios-todos",
-    label: "Todos los recordatorios",
-    Icon: MaterialSymbolsListAltOutlineRounded,
+    path: "guardar-data",
+    label: "Guardar nuevos datos",
+    Icon: IconParkOutlineSave,
+  },
+  {
+    path: "estadisticas",
+    label: "Estadisticas ingresos y egresos",
+    Icon: CarbonAnalytics,
+  },
+  {
+    path: "predicciones",
+    label: "Predicción financieras",
+    Icon: FluentPredictions24Regular,
   },
   {
     path: "nuevo-recordatorio",
     label: "Añadir recordatorio",
     Icon: MaterialSymbolsAssignmentAddOutlineRounded,
+  },
+  {
+    path: "recordatorios-todos",
+    label: "Todos los recordatorios",
+    Icon: MaterialSymbolsListAltOutlineRounded,
+  },
+  {
+    path: "register",
+    label: "Registrar usuario",
+    Icon: SolarUsersGroupRoundedLinear,
   },
   {
     path: "usuario",
@@ -45,16 +67,6 @@ const sidebarOptions: SidebarOption[] = [
         Icon: MaterialSymbolsLightSettingsAccountBoxOutlineRounded,
       },
     ],
-  },
-  {
-    path: "register",
-    label: "Registrar usuario",
-    Icon: SolarUsersGroupRoundedLinear,
-  },
-  {
-    path: "estadisticas",
-    label: "Estadisticas ingresos y egresos",
-    Icon: CarbonAnalytics,
   },
 ];
 

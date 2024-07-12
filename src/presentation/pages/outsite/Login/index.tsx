@@ -21,6 +21,7 @@ const Login = () => {
   });
   const [error, setError] = useState<ErrorType>(null);
   const [showErrorDialog, setShowErrorDialog] = useState<boolean>(false);
+  
   const handleChange: handleChangeType = ({ target: { name, value } }) => {
     setUser({ ...user, [name]: value });
     setError(null);

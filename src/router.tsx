@@ -25,9 +25,7 @@ const router = createBrowserRouter([
       {
         path: "/iniciar-sesion",
         async lazy() {
-          const LoginPage = await import(
-            "./presentation/pages/outsite/Login"
-          );
+          const LoginPage = await import("./presentation/pages/outsite/Login");
           return { Component: LoginPage.default };
         },
       },
@@ -77,18 +75,22 @@ const router = createBrowserRouter([
         },
       },
       {
-        path:"recordatorios-todos",
+        path: "recordatorios-todos",
         async lazy() {
-          const AllTaskRemindersPage = await import ("./presentation/pages/panel/views/AllTasksRemindersPage");
-          return{Component: AllTaskRemindersPage.default}
-        }
+          const AllTaskRemindersPage = await import(
+            "./presentation/pages/panel/views/AllTasksRemindersPage"
+          );
+          return { Component: AllTaskRemindersPage.default };
+        },
       },
       {
-        path:"nuevo-recordatorio",
+        path: "nuevo-recordatorio",
         async lazy() {
-          const AddTaskReminderPage = await import ("./presentation/pages/panel/views/AddTaskReminderPage");
-          return{Component: AddTaskReminderPage.default}
-        }
+          const AddTaskReminderPage = await import(
+            "./presentation/pages/panel/views/AddTaskReminderPage"
+          );
+          return { Component: AddTaskReminderPage.default };
+        },
       },
       {
         path: "*",
@@ -96,30 +98,54 @@ const router = createBrowserRouter([
           const NotFoudPage = await import(
             "./presentation/pages/outsite/NotFoundPage"
           );
-          return { Component: NotFoudPage.default}
+          return { Component: NotFoudPage.default };
         },
       },
       {
-        path: 'usuario/perfil',
+        path: "usuario/perfil",
         async lazy() {
-          const ProfilePage = await import('./presentation/pages/panel/views/ProfilePage');
+          const ProfilePage = await import(
+            "./presentation/pages/panel/views/ProfilePage"
+          );
           return { Component: ProfilePage.default };
-        }
+        },
       },
       {
-        path: 'usuario/actualizar-perfil',
+        path: "usuario/actualizar-perfil",
         async lazy() {
-          const ProfileUpdatePage = await import('./presentation/pages/panel/views/ProfileUpdatePage');
+          const ProfileUpdatePage = await import(
+            "./presentation/pages/panel/views/ProfileUpdatePage"
+          );
           return { Component: ProfileUpdatePage.default };
-        }
+        },
       },
       {
-        path: 'estadisticas',
-        async lazy(){
-          const IncomeExpenseStatistcsPage = await import("./presentation/pages/panel/views/IncomeExpenseStatisticsPage");
-          return { Component: IncomeExpenseStatistcsPage.default}
-        }
-      }
+        path: "estadisticas",
+        async lazy() {
+          const IncomeExpenseStatistcsPage = await import(
+            "./presentation/pages/panel/views/IncomeExpenseStatisticsPage"
+          );
+          return { Component: IncomeExpenseStatistcsPage.default };
+        },
+      },
+      {
+        path: "predicciones",
+        async lazy() {
+          const PredictionsPage = await import(
+            "./presentation/pages/panel/views/PredictionsPage"
+          );
+          return { Component: PredictionsPage.default };
+        },
+      },
+      {
+        path: "guardar-data",
+        async lazy() {
+          const SaveDataPage = await import(
+            "./presentation/pages/panel/views/SaveDataPage"
+          );
+          return { Component: SaveDataPage.default };
+        },
+      },
     ],
   },
   {

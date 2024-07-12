@@ -1,14 +1,15 @@
 import { getDataI } from "../../../../domain/types/getDataI";
-import { years } from "../../../../hooks/DiccionarioXD";
-import { capitalizarPrimeraLetra, formatDataMoney } from "./DashboardTest";
+// import { years } from "../../../../hooks/DiccionarioXD";
+import { capitalizeFirstLetter } from "../../../../hooks/formatHook/capitalizeFirstLetter";
+import { formatDataMoney } from "../../../../hooks/formatHook/formatDataMoney";
 
 interface DataInTableProps {
   data: getDataI[];
 }
 
-const getYear = (id_anio: number) => {
-  return years[id_anio] || id_anio;
-};
+// const getYear = (id_anio: number) => {
+//   return years[id_anio] || id_anio;
+// };
 
 // const getType = (id_tipo: number) => {
 //   return typeofData[id_tipo] || id_tipo;
@@ -29,7 +30,7 @@ const DataInTable = (props: DataInTableProps) => {
           {data.map((data, index) => (
             <tr key={index} className="text-center">
               {/* <td className="px-4 py-2">{getYear(data.id_anio)}</td> */}
-              <td className="px-4 py-2">{capitalizarPrimeraLetra(data.mes)}</td>
+              <td className="px-4 py-2">{capitalizeFirstLetter(data.mes)}</td>
               <td className="px-4 py-2">S/{formatDataMoney(data.total)}</td>
             </tr>
           ))}

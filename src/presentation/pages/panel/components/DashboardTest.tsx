@@ -3,62 +3,31 @@ import GraphicsChartJs from "../../../components/graphics/GraphicsTest";
 import { motion } from "framer-motion";
 import getConsultAPI from "../../../../hooks/api/getConsultAPI";
 import { getDataI } from "../../../../domain/types/getDataI";
+import { formatDataMoney } from "../../../../hooks/formatHook/formatDataMoney";
+import { capitalizeFirstLetter } from "../../../../hooks/formatHook/capitalizeFirstLetter";
+import { netBenefit } from "../../../../hooks/formatHook/netBenefit";
 
-interface BeneficioInt {
-  ingreso: string | undefined;
-  egreso: string | undefined;
-}
-
-export function capitalizarPrimeraLetra(str: string | undefined) {
-  if (str === undefined) return;
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
-export function beneficioNeto(props: BeneficioInt) {
-  const { egreso, ingreso } = props;
-  if (ingreso !== undefined && egreso !== undefined) {
-    const parseIngreso = parseInt(ingreso);
-    const parseEgreso = parseInt(egreso);
-    const beneficioTotal = (parseIngreso - parseEgreso).toString();
-    const benficioFormated = formatDataMoney(beneficioTotal)
-    return (benficioFormated);
-  }
-  return;
-}
-
-export function formatDataMoney(number: string | undefined) {
-  if (number === undefined) return;
-  const parseNumber = parseInt(number);
-
-  if (parseNumber >= 1000 && parseNumber < 10000) {
-    return number.substring(0, 1) + "," + number.substring(1);
-  } else if (parseNumber >= 10000) {
-    return number.substring(0, 2) + "," + number.substring(2);
-  } else {
-    return number;
-  }
-}
-interface ComponentDashBoard{
+interface ComponentDashBoard {
   title: string;
   year: string;
 }
-const ComponentDashBoard = ({title, year}:ComponentDashBoard) => {
+const ComponentDashBoard = ({ title, year }: ComponentDashBoard) => {
   const [income, setIncome] = useState<getDataI>();
   const [egress, setEgress] = useState<getDataI>();
   const [dataGraphics, setDataGraphics] = useState<number[]>([]);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const { reponseIn, reponseOut } = await getConsultAPI();
-        
-        const dataInArray:number[] = []
-        reponseOut.forEach(data => {
-          const dataTotal = parseInt(data.total)
+
+        const dataInArray: number[] = [];
+        reponseOut.forEach((data) => {
+          const dataTotal = parseInt(data.total);
           dataInArray.push(dataTotal);
-          })
-          setDataGraphics(dataInArray);
-        
+        });
+        setDataGraphics(dataInArray);
+
         setIncome(reponseIn.at(-1));
         setEgress(reponseOut.at(-1));
       } catch (error) {
@@ -67,7 +36,7 @@ const ComponentDashBoard = ({title, year}:ComponentDashBoard) => {
     };
     fetchData();
   }, []);
-  console.log(dataGraphics)
+  console.log(dataGraphics);
   return (
     <div className="w-full overflow-hidden">
       <div className="flex-grow lg:p-6">
@@ -98,7 +67,7 @@ const ComponentDashBoard = ({title, year}:ComponentDashBoard) => {
             className="mb-8"
           >
             <h1 className="text-3xl text-black dark:text-white">
-              {capitalizarPrimeraLetra(income?.mes)}
+              {capitalizeFirstLetter(income?.mes)}
             </h1>
           </motion.div>
         </div>
@@ -118,7 +87,7 @@ const ComponentDashBoard = ({title, year}:ComponentDashBoard) => {
             className="p-6 bg-white rounded-3xl shadow-lg flex flex-row min-w-60 dark:bg-[#202528]"
           >
             <div className=" w-1/2">
-              <h2 className="text-xl font-bold mb-4">Ingresos totales</h2>
+              <h2 className="text-xl font-bold mb-4 text-nowrap">Ingresos totales</h2>
               <p className="text-3xl font-semibold text-green-500">
                 S/
                 {formatDataMoney(income?.total)}
@@ -163,10 +132,10 @@ const ComponentDashBoard = ({title, year}:ComponentDashBoard) => {
             className="p-6 bg-white rounded-3xl  shadow-lg flex flex-row min-w-60 dark:bg-[#202528] "
           >
             <div className=" w-1/2">
-              <h2 className="text-xl font-bold mb-4">Beneficio Neto</h2>
+              <h2 className="text-xl font-bold mb-4 text-nowrap">Beneficio Neto</h2>
               <p className="text-3xl font-semibold text-blue-500">
                 S/
-                {beneficioNeto({
+                {netBenefit({
                   egreso: egress?.total,
                   ingreso: income?.total,
                 })}
@@ -190,7 +159,7 @@ const ComponentDashBoard = ({title, year}:ComponentDashBoard) => {
           >
             <h1 className="mt-4 ml-4 text-2xl font-bold">Graficas {title}</h1>
             <div className="flex flex-col w-full p-8">
-              <GraphicsChartJs title={title} year={year}  dataE={dataGraphics}  />
+              <GraphicsChartJs title={title} year={year} dataE={dataGraphics} />
             </div>
           </motion.div>
 

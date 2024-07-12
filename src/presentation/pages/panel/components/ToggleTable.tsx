@@ -9,7 +9,6 @@ const ToogleTable = (props: ToggleTableI) => {
   const { setIsChecked, isChecked } = props;
 
   return (
-    <div className="flex flex-wrap justify-center items-center w-11/12 mx-auto select-none gap-2 max-w-[500px]">
       <label className="text-slate-400">
         <input
           onClick={() => setIsChecked()}
@@ -24,7 +23,6 @@ const ToogleTable = (props: ToggleTableI) => {
           <span className="transition-all duration-300 text-center">Tabla</span>
         </span>
       </label>
-    </div>
   );
 };
 export default ToogleTable;
