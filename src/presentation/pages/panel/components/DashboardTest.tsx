@@ -6,6 +6,8 @@ import { getDataI } from "../../../../domain/types/getDataI";
 import { formatDataMoney } from "../../../../hooks/formatHook/formatDataMoney";
 import { capitalizeFirstLetter } from "../../../../hooks/formatHook/capitalizeFirstLetter";
 import { netBenefit } from "../../../../hooks/formatHook/netBenefit";
+import RadarGraphicChartJS from "../../../components/graphics/RadarGraphic";
+import BarGraphicChartJS from "../../../components/graphics/BarGraphic";
 
 interface ComponentDashBoard {
   title: string;
@@ -23,10 +25,10 @@ const ComponentDashBoard = ({ title, year }: ComponentDashBoard) => {
         const { reponseIn, reponseOut } = await getConsultAPI();
 
         const dataInArray: number[] = [];
-        const dataArrayMonths:string[] =[]
+        const dataArrayMonths: string[] = [];
         reponseOut.forEach((data) => {
           const dataTotal = parseInt(data.total);
-          const dataMonth = data.mes
+          const dataMonth = data.mes;
           dataInArray.push(dataTotal);
           dataArrayMonths.push(dataMonth);
         });
@@ -91,7 +93,9 @@ const ComponentDashBoard = ({ title, year }: ComponentDashBoard) => {
             className="p-6 bg-white rounded-3xl shadow-lg flex flex-row min-w-60 dark:bg-[#202528]"
           >
             <div className=" w-1/2">
-              <h2 className="text-xl font-bold mb-4 text-nowrap">Ingresos totales</h2>
+              <h2 className="text-xl font-bold mb-4 text-nowrap">
+                Ingresos totales
+              </h2>
               <p className="text-3xl font-semibold text-green-500">
                 S/
                 {formatDataMoney(income?.total)}
@@ -136,7 +140,9 @@ const ComponentDashBoard = ({ title, year }: ComponentDashBoard) => {
             className="p-6 bg-white rounded-3xl  shadow-lg flex flex-row min-w-60 dark:bg-[#202528] "
           >
             <div className=" w-1/2">
-              <h2 className="text-xl font-bold mb-4 text-nowrap">Beneficio Neto</h2>
+              <h2 className="text-xl font-bold mb-4 text-nowrap">
+                Beneficio Neto
+              </h2>
               <p className="text-3xl font-semibold text-blue-500">
                 S/
                 {netBenefit({
@@ -163,7 +169,12 @@ const ComponentDashBoard = ({ title, year }: ComponentDashBoard) => {
           >
             <h1 className="mt-4 ml-4 text-2xl font-bold">Graficas {title}</h1>
             <div className="flex flex-col w-full p-8">
-              <GraphicsChartJs title={title} year={year} dataE={dataGraphics} labels={labelMonth}/>
+              <GraphicsChartJs
+                title={title}
+                year={year}
+                dataE={dataGraphics}
+                labels={labelMonth}
+              />
             </div>
           </motion.div>
 
@@ -177,7 +188,7 @@ const ComponentDashBoard = ({ title, year }: ComponentDashBoard) => {
             }}
             className="lg:col-span-3 grid grid-cols-1  w-full gap-4  "
           >
-            <div className="max-lg:col-span-1 lg:col-span-2 h-96 dark:text-black bg-white flex flex-col dark:bg-[#202528]  items-center shadow-xl p-8 rounded-3xl overflow-y-auto">
+            {/* <div className="max-lg:col-span-1 lg:col-span-2 h-96 dark:text-black bg-white flex flex-col dark:bg-[#202528]  items-center shadow-xl p-8 rounded-3xl overflow-y-auto">
               <div className="flex flex-col w-full h-full p-4 space-y-4">
                 <div className="flex items-start">
                   <img
@@ -219,7 +230,20 @@ const ComponentDashBoard = ({ title, year }: ComponentDashBoard) => {
                   />
                 </div>
               </form>
-            </div>
+            </div> */}
+            <BarGraphicChartJS
+              title={title}
+              year={year}
+              dataE={dataGraphics}
+              labels={labelMonth}
+            />
+
+            <RadarGraphicChartJS
+              title={title}
+              year={year}
+              dataE={dataGraphics}
+              labels={labelMonth}
+            />
           </motion.div>
         </div>
       </div>
