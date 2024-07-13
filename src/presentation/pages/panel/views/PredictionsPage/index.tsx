@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { typeofData, years } from "../../../../../hooks/DiccionarioXD";
+import { typeofData } from "../../../../../hooks/DiccionarioXD";
 import { useState } from "react";
 import PredictionLoader from "../../../../components/PredictionLoader";
 import getPredictAPI, {
@@ -8,7 +8,6 @@ import getPredictAPI, {
 import { formatDataMoney } from "../../../../../hooks/formatHook/formatDataMoney";
 const PredictionPage = () => {
   const [selectedType, setSelectedType] = useState<number | null>(null);
-  const [selectedYear, setSelectedYear] = useState<number | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [dataPredict, setDataPredict] = useState<getPredictResponse | null>(
     null
@@ -18,17 +17,12 @@ const PredictionPage = () => {
     setSelectedType(parseInt(event.target.value, 10));
   };
 
-  const handleYearChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedYear(parseInt(event.target.value, 10));
-  };
-
   const handleSubmit = async () => {
-    if (selectedType && selectedYear && selectedType > 0 && selectedYear > 0) {
+    if (selectedType && selectedType > 0) {
       try {
         setLoading(true);
         const dataPredict = await getPredictAPI({
           typeData: selectedType,
-          typeYear: selectedYear,
         });
         console.log("antes del settimeout", dataPredict);
         setTimeout(() => {
@@ -94,7 +88,7 @@ const PredictionPage = () => {
             </select>
           </div>
 
-          <div className="flex gap-5 items-center justify-center">
+          {/* <div className="flex gap-5 items-center justify-center">
             <label className="mb-2">Año:</label>
             <select
               value={selectedYear || ""}
@@ -110,7 +104,7 @@ const PredictionPage = () => {
                 </option>
               ))}
             </select>
-          </div>
+          </div> */}
 
           <button
             onClick={handleSubmit}
@@ -136,7 +130,7 @@ const PredictionPage = () => {
         ) : dataPredict === null ? (
           <p className="text-2xl">Esperando datos para la prediccion</p>
         ) : (
-          <p>S/{formatDataMoney(dataPredict.prediction.toString())}.00</p>
+          <p>S/{formatDataMoney(String(dataPredict.prediction))}.00</p>
         )}
       </motion.div>
     </section>

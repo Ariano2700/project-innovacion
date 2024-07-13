@@ -23,24 +23,12 @@ type GraphicsChartJsI = {
   dataE: number[];
   title: string;
   year: string;
+  labels: string[];
 };
 const GraphicsChartJs = (props: GraphicsChartJsI) => {
-  const { dataE, title, year } = props;
+  const { dataE, title, year, labels } = props;
   const data = {
-    labels: [
-      "Enero",
-      "Febrero",
-      "Marzo",
-      "Abril",
-      "Mayo",
-      "Junio",
-      "Julio",
-      "Agosto",
-      "Septiembre",
-      "Octubre",
-      "Noviembre",
-      "Diciembre",
-    ],
+    labels: labels,
     datasets: [
       {
         label: `Control de ${title} del año ${year}`,

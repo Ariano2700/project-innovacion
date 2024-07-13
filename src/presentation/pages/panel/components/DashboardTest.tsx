@@ -14,6 +14,7 @@ interface ComponentDashBoard {
 const ComponentDashBoard = ({ title, year }: ComponentDashBoard) => {
   const [income, setIncome] = useState<getDataI>();
   const [egress, setEgress] = useState<getDataI>();
+  const [labelMonth, setLabelMonth] = useState<string[]>([]);
   const [dataGraphics, setDataGraphics] = useState<number[]>([]);
 
   useEffect(() => {
@@ -22,12 +23,15 @@ const ComponentDashBoard = ({ title, year }: ComponentDashBoard) => {
         const { reponseIn, reponseOut } = await getConsultAPI();
 
         const dataInArray: number[] = [];
+        const dataArrayMonths:string[] =[]
         reponseOut.forEach((data) => {
           const dataTotal = parseInt(data.total);
+          const dataMonth = data.mes
           dataInArray.push(dataTotal);
+          dataArrayMonths.push(dataMonth);
         });
         setDataGraphics(dataInArray);
-
+        setLabelMonth(dataArrayMonths);
         setIncome(reponseIn.at(-1));
         setEgress(reponseOut.at(-1));
       } catch (error) {
@@ -159,7 +163,7 @@ const ComponentDashBoard = ({ title, year }: ComponentDashBoard) => {
           >
             <h1 className="mt-4 ml-4 text-2xl font-bold">Graficas {title}</h1>
             <div className="flex flex-col w-full p-8">
-              <GraphicsChartJs title={title} year={year} dataE={dataGraphics} />
+              <GraphicsChartJs title={title} year={year} dataE={dataGraphics} labels={labelMonth}/>
             </div>
           </motion.div>
 

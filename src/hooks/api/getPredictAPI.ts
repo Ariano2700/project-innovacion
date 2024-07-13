@@ -1,5 +1,4 @@
 interface getPredictI {
-  typeYear: number;
   typeData: number;
 }
 
@@ -7,7 +6,7 @@ export interface getPredictResponse {
   prediction: number;
 }
 
-const getPredictAPI = async ({ typeData, typeYear }: getPredictI) => {
+const getPredictAPI = async ({ typeData }: getPredictI) => {
   const baseURL = import.meta.env.VITE_API_URL;
   try {
     const requestEgress = await fetch(`${baseURL}predict`, {
@@ -16,8 +15,7 @@ const getPredictAPI = async ({ typeData, typeYear }: getPredictI) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        tipo_dato: typeData,
-        tipo_anio: typeYear,
+        id_tipo: typeData,
       }),
     });
     if (!requestEgress.ok) {

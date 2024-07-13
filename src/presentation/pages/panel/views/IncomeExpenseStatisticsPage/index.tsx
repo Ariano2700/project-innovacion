@@ -5,10 +5,13 @@ import getConsultAPI from "../../../../../hooks/api/getConsultAPI";
 import ToogleTable from "../../components/ToggleTable";
 import DataInTable from "../../components/DataInTable";
 import { getDataI } from "../../../../../domain/types/getDataI";
+import getDataByType from "../../../../../hooks/api/getDataByType";
 
 const IncomeExpenseStatistcsPage = () => {
   const [income, setIncome] = useState<number[]>([]);
   const [egress, setEgress] = useState<number[]>([]);
+  const [incomeLabelsMonth, setIncomeLabelsMonth] = useState<string[]>([]);
+  const [egressLabelsMonth, setEgressLabelsMonth] = useState<string[]>([]);
   const [incomeTable, setIncomeTable] = useState<getDataI[]>();
   const [egreseTable, setEgreseTable] = useState<getDataI[]>();
 
@@ -17,22 +20,35 @@ const IncomeExpenseStatistcsPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { reponseIn, reponseOut } = await getConsultAPI();
-        if (reponseIn !== undefined && reponseOut !== undefined) {
+        // const { reponseIn, reponseOut } = await getConsultAPI();
+        const responseIn = await getDataByType({ id_tipo: "1" });
+        const responseOut = await getDataByType({ id_tipo: "2" });
+
+        console.log(responseIn);
+
+        if (responseIn !== undefined && responseOut !== undefined) {
           const dataInArray: number[] = [];
           const dataOutArray: number[] = [];
-          reponseOut.forEach((data) => {
+          const dataInArrayMonths: string[] = [];
+          const dataOutArrayMonths: string[] = [];
+          responseOut.response.forEach((data) => {
             const dataTotal = parseInt(data.total);
+            const dataMonth = data.mes;
             dataOutArray.push(dataTotal);
+            dataOutArrayMonths.push(dataMonth);
           });
-          reponseIn.forEach((data) => {
+          responseIn.response.forEach((data) => {
             const dataTotal = parseInt(data.total);
+            const dataMonth = data.mes;
             dataInArray.push(dataTotal);
+            dataInArrayMonths.push(dataMonth);
           });
           setIncome(dataInArray);
           setEgress(dataOutArray);
-          setIncomeTable(reponseIn);
-          setEgreseTable(reponseOut);
+          setIncomeLabelsMonth(dataInArrayMonths);
+          setEgressLabelsMonth(dataOutArrayMonths);
+          setIncomeTable(responseIn.response);
+          setEgreseTable(responseOut.response);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -97,7 +113,7 @@ const IncomeExpenseStatistcsPage = () => {
               }}
               className="mb-8 text-2xl font-bold text-black dark:text-white"
             >
-              Tabla de ingresos año 2023
+              Tabla de ingresos año 2023 - 2024
             </motion.h2>
             <DataInTable data={incomeTable !== undefined ? incomeTable : []} />
           </motion.div>
@@ -120,7 +136,7 @@ const IncomeExpenseStatistcsPage = () => {
               }}
               className="mb-8 text-2xl font-bold text-black dark:text-white"
             >
-              Tabla de egresos año 2023
+              Tabla de egresos año 2023 - 2024
             </motion.h2>
             <DataInTable data={egreseTable !== undefined ? egreseTable : []} />
           </motion.div>
@@ -146,7 +162,12 @@ const IncomeExpenseStatistcsPage = () => {
                 Graficas ingresos
               </h1>
               <div className="flex flex-col w-full p-8">
-                <GraphicsChartJs title="ingresos" year="2023" dataE={income} />
+                <GraphicsChartJs
+                  title="ingresos"
+                  year="2023"
+                  dataE={income}
+                  labels={incomeLabelsMonth}
+                />
               </div>
             </motion.div>
             <motion.div
@@ -165,7 +186,12 @@ const IncomeExpenseStatistcsPage = () => {
             >
               <h1 className="mt-4 ml-4 text-2xl font-bold">Graficas egresos</h1>
               <div className="flex flex-col w-full p-8">
-                <GraphicsChartJs title="egresos" year="2023" dataE={egress} />
+                <GraphicsChartJs
+                  title="egresos"
+                  year="2023"
+                  dataE={egress}
+                  labels={egressLabelsMonth}
+                />
               </div>
             </motion.div>
           </div>
