@@ -121,7 +121,7 @@ const GraphicsChartJs = (props: GraphicsChartJsI) => {
   };
 
   return (
-    <div className="h-96">
+    <div className="h-96 w-full">
       <Line data={data} options={options} />
     </div>
   );

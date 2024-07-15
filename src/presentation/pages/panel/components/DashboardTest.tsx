@@ -6,8 +6,8 @@ import { getDataI } from "../../../../domain/types/getDataI";
 import { formatDataMoney } from "../../../../hooks/formatHook/formatDataMoney";
 import { capitalizeFirstLetter } from "../../../../hooks/formatHook/capitalizeFirstLetter";
 import { netBenefit } from "../../../../hooks/formatHook/netBenefit";
-import RadarGraphicChartJS from "../../../components/graphics/RadarGraphic";
-import BarGraphicChartJS from "../../../components/graphics/BarGraphic";
+// import RadarGraphicChartJS from "../../../components/graphics/RadarGraphic";
+// import BarGraphicChartJS from "../../../components/graphics/BarGraphic";
 
 interface ComponentDashBoard {
   title: string;
@@ -73,7 +73,7 @@ const ComponentDashBoard = ({ title, year }: ComponentDashBoard) => {
             className="mb-8"
           >
             <h1 className="text-3xl text-black dark:text-white">
-              {capitalizeFirstLetter(income?.mes)}
+              {capitalizeFirstLetter(income?.mes)} del {2023}
             </h1>
           </motion.div>
         </div>
@@ -231,7 +231,7 @@ const ComponentDashBoard = ({ title, year }: ComponentDashBoard) => {
                 </div>
               </form>
             </div> */}
-            <BarGraphicChartJS
+            {/* <BarGraphicChartJS
               title={title}
               year={year}
               dataE={dataGraphics}
@@ -243,7 +243,7 @@ const ComponentDashBoard = ({ title, year }: ComponentDashBoard) => {
               year={year}
               dataE={dataGraphics}
               labels={labelMonth}
-            />
+            /> */}
           </motion.div>
         </div>
       </div>

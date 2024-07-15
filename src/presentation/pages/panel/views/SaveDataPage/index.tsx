@@ -12,7 +12,10 @@ import saveDataAPI from "../../../../../hooks/api/saveDataAPI";
 import { ConfirmAlert } from "../../../../components/alerts/ConfirmAlert";
 import { SavedAlert } from "../../../../components/alerts/SavedAlert";
 import { ErrorAlert } from "../../../../components/alerts/ErrorAlert";
+import PredictionLoader from "../../../../components/PredictionLoader";
+import { useNavigate } from "react-router-dom";
 const SaveDataPage = () => {
+  const navigate = useNavigate();
   const [selectedType, setSelectedType] = useState<number | null>(null);
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
   const [selectedMonth, setSelectedMonth] = useState<string | null>(null);
@@ -55,7 +58,6 @@ const SaveDataPage = () => {
       try {
         ConfirmAlert(
           async () => {
-            setLoading(true);
             const req = await saveDataAPI({
               typeYear: selectedYear,
               mes: selectedMonth,
@@ -65,10 +67,15 @@ const SaveDataPage = () => {
             if (req === 409) {
               setError("El monto para ese tipo de dato, mes y año ya existen.");
               setShowErrorDialog(true);
-              return
+              return;
             }
             console.log(req);
             SavedAlert({ title: "Se guardaron correctamente los datos" });
+            setLoading(true);
+            setTimeout(() => {
+              setLoading(false);
+            }, 500);
+            navigate("/panel/estadisticas");
           },
           {
             confirmButtonText: "Guardar datos",
@@ -78,11 +85,13 @@ const SaveDataPage = () => {
         );
       } catch (error: any) {
         setError(error.message);
+        setLoading(false);
         setShowErrorDialog(true);
         console.log(error);
       }
     } else {
       setError("Se deben colocar todos los datos para el guardado de estos");
+      setLoading(false);
       setShowErrorDialog(true);
     }
   };
@@ -90,6 +99,11 @@ const SaveDataPage = () => {
   return (
     <section>
       {showErrorDialog && ErrorAlert({ error })}
+      {loading && (
+        <div className="z-10 flex justify-center items-center min-h-screen opacity-75">
+          <PredictionLoader />
+        </div>
+      )}
       <motion.h1
         initial={{ opacity: 0, x: -100 }}
         animate={{ opacity: 1, x: 0 }}

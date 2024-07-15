@@ -3,7 +3,8 @@ interface getPredictI {
 }
 
 export interface getPredictResponse {
-  prediction: number;
+  predictionOneMonth: number;
+  predictionTwoMonth: number;
 }
 
 const getPredictAPI = async ({ typeData }: getPredictI) => {

@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import GraphicsChartJs from "../../../../components/graphics/GraphicsTest";
 import { useEffect, useState } from "react";
-import getConsultAPI from "../../../../../hooks/api/getConsultAPI";
 import ToogleTable from "../../components/ToggleTable";
 import DataInTable from "../../components/DataInTable";
 import { getDataI } from "../../../../../domain/types/getDataI";

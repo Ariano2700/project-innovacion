@@ -6,7 +6,7 @@ const HomePage = () => {
     <>
       <div className="lg:flex mt-10">
         <ComponentDashBoard title="egresos" year="2023"/>
-        <div className="flex items-center max-sm:justify-center lg:flex-col lg:items-end  ">
+        <div className="flex items-center max-sm:justify-center lg:flex-col lg:items-end">
           <TasksRemindersBase />
         </div>
       </div>

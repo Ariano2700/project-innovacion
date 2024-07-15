@@ -34,7 +34,7 @@ import {
       labels: labels,
       datasets: [
         {
-          label: `Control de ${title} del año ${year}`,
+          label: `${title} ${year}`,
           data: dataE,
           backgroundColor: [
             "rgba(255, 99, 132, 0.2)",
@@ -104,7 +104,7 @@ import {
         },
       };
     return (
-      <div className="h-96">
+      <div className="h-96 w-full flex justify-center">
         <Bar data={data} options={options} />
       </div>
     );
